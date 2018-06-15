@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pokerKata.iml" filepath="$PROJECT_DIR$/.idea/modules/pokerKata.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pokerKata_main.iml" filepath="$PROJECT_DIR$/.idea/modules/pokerKata_main.iml" group="pokerKata" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pokerKata_test.iml" filepath="$PROJECT_DIR$/.idea/modules/pokerKata_test.iml" group="pokerKata" />
+    </modules>
+  </component>
+</project>
