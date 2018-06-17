@@ -1,0 +1,6 @@
+package model;
+
+public enum Hands {
+
+    FLUSH, STRAIT, FLUSH_ROYAL, TWO_OF_A_KIND, THREE_OF_A_KIND, FOUR_OF_A_KIND, NOTHING, TWO_PAIR
+}
