@@ -1,0 +1,66 @@
+Hi Giorgo,
+Here in this file I will write comments related to the code.
+I will created of your project just so that if I raise a PR you can easily see the diffs.
+
+
+- I noticed an empty CardTest class. I don't know if you are thinking in testing
+model.Card Testing POJOs(Plain Old Java Objects) is not necessary since they just have
+getters and setters.
+
+
+
+- I noticed that you overrided equals & hashcode, that is a good practice but in your
+app you acomparing the just some values of the card. For custom comparisons equal can be
+overided, otherwise not really needed(Tests pass widout it). Ofcoure, if you override
+equals you will have to also override hashcode so datastructures that use that type work well.
+
+This quote from Effective Java i found in a link: https://stackoverflow.com/questions/2265503/why-do-i-need-to-override-the-equals-and-hashcode-methods-in-java
+You must override hashCode() in every class that overrides equals().
+Failure to do so will result in a violation of the general contract for Object.
+hashCode(), which will prevent your class from functioning properly in conjunction
+with all hash-based collections, including HashMap, HashSet, and Hashtable.
+
+
+
+- I noticed that you used Mock for Cards. It's not wrong but seems a bit overkill. We often mock services, but
+domain objects not really. Perhaps it would be more appropiated to create a builder that would allow you to quickly create
+those Cards you need in your test. I will create an embedded builder just for fun and maybe this reduces some lines in the test.
+
+- The variable handGlobal is better if you just call it hand, also good to keep it private.
+
+- Noticed that you are using the setup method to preconfigure some cards, I would suggest to do this
+additions in the individual methods, this way you have more flexibility to mix ranks and suits.
+
+- The creation of the card should not be allowed if it doesn't have both Rank and Suit(Composition).
+
+- I am not fan of loops in tests since you are just creating a bunch of cards loops are not really needed.
+
+- It's nice to add one empty line between the method name and the beggining of the code
+
+Missing tests:
+- Exact same card in the hand
+- Size of the hand should be exactly 5.
+- Cards must have both a suit and a rank
+
+In the production code:
+
+- It's good practice to use packages. model can be used to contain domain objects and
+services to contain business logic in the service layer.
+
+- The class PokerHandIdentifier is getting too big. It's good to start thinking in making it
+smaller. Creating an interface called HandValidator can be interesting, all the different types
+of validators can implement. This will give you not just a more OO solution, also will allow
+you to test easier and mantain the code easier.
+
+- The logic to check if the combination is Straight can be simplified. Have a look at the approach used
+in StraightValidator.
+
+- Some method names need improvement
+
+- I think that the Identifier class shouldn't return Boolean, if it is supposed to identify which hand then it should return
+the type of hand that the player has.
+
+
+- Still more refactoring could be done but I don't have much time. Methods name need a review also there is some duplication left.
+Notice that some validators check if the hand is empty but others don't this probably need to be included everywhere but in order to reduce
+duplication perhaps the decorator pattern could help.
